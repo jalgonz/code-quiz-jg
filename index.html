@@ -18,7 +18,7 @@
         <div class="row">
             <!--View Highscore Button-->
            <div class="col-6">
-                <button id="viewHighscores" type="button" class="btn btn-warning text-left">View Highscores</button>
+                <button id="view-highscores" type="button" class="btn btn-warning text-left">View Highscores</button>
            </div> 
            <!--Timer-->
            <div class="col-6">
@@ -39,10 +39,11 @@
                     <button id="start-btn" type="btn" class="btn btn-success mx-auto">Start</button>
                 </div>
             </section>
+
             <!--Question Screen-->
             <section id="question-screen">
                 <div class="row">
-                    <p id="randomQuestion" class="justify-content-center"></p>
+                    <p id="random-question" class="justify-content-center"></p>
                     <div class="justify-content-center">
                         <p><button id="a1" class="btn btn-secondary"></button></p>
                         <p><button id="a2" class="btn btn-secondary"></button></p>
@@ -54,7 +55,16 @@
                     </div>
                 </div>
             </section>
+
             <!--End Screen-->
+            <section id="end">
+                <div class="row">
+                    <h2>Quiz Complete! Your final score is: <span id="final-score"></span></h2>
+                    <p>Enter initials: <span><input placeholder="initials" id="initials"></span>
+                        <button id="submit-score" class="btn btn-warning">Submit</button>
+                    </p>
+                </div>
+            </section>
             <!--Highscore Screen-->
         </div>
     </main>
