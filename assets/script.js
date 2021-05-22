@@ -1,3 +1,6 @@
+//Array of Questions 
+var questions = 
+
 // Declare Variables
 
 //Timer
@@ -26,7 +29,29 @@ var scoreList = [];
 //Buttons
 var startBtn = document.querySelector("#start-btn");
 //answer button? 
-var choice1 = document.querySelector("#a1");
-var choice2 = document.querySelector("#a2");
-var choice3 = document.querySelector("#a3");
-var choice4 = document.querySelector("#a4");
+var choice1Btn = document.querySelector("#a1");
+var choice2Btn = document.querySelector("#a2");
+var choice3Btn = document.querySelector("#a3");
+var choice4Btn = document.querySelector("#a4");
+var submitScoreBtn = document.querySelector("#submit-score");
+var goBackBtn = document.querySelector("#go-back");
+var clearScoresBtn = document.querySelector("#clear-scores");
+var viewHighscoresBtn = document.querySelector("#view-highscores");
+
+//Functions
+
+//Timer
+function startTimer(){
+    var timerInterval = setInterval(function (){
+        timeLeft--;
+        timeEl.textContent = "Time left: " + timeLeft;
+
+        if(timeLeft <= 0 || questionsAwnsered === questions.length) {
+            clearInterval(timerInterval);
+            questionsEl.style.display = "none";
+            endEl.style.display = "block";
+            scoreEl.textContent = secondsLeft;
+        }
+    },1000)
+}
+
