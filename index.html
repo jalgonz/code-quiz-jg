@@ -18,7 +18,7 @@
         <div class="row">
             <!--View Highscore Button-->
            <div class="col-6">
-                <button id="viewHighscores" type="button" class="btn text-left">View Highscores</button>
+                <button id="viewHighscores" type="button" class="btn btn-warning text-left">View Highscores</button>
            </div> 
            <!--Timer-->
            <div class="col-6">
@@ -32,10 +32,11 @@
     <main>
         <div class="container">
             <!--Start Screen-->
-            <section id="start">
-                <div class="row">
-                    <h1 class="text-center">Welcome to Joshua's Code Quiz</h1>
-                    <p class="text-center">Press start to begin. You have 90 seconds to complete the quiz.</p>
+            <section id="start-screen">
+                <div class="row justify-content-center">
+                    <h1 class="d-flex text-center ">Welcome to Joshua's Code Quiz</h1>
+                    <p class="d-flex text-center">Press start to begin. You have 90 seconds to complete the quiz. Every wrong answer results in a 5 second penalty. The quiz ends when the timer runs out or all questions are answered.</p>
+                    <button id="start-btn" type="btn" class="btn btn-success mx-auto">Start</button>
                 </div>
             </section>
             <!--Question Screen-->
