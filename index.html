@@ -36,7 +36,7 @@
             <section id="start-screen">
                 <div class="row justify-content-center">
                     <h1 class="d-flex text-center ">Welcome to Joshua's Code Quiz</h1>
-                    <p class="d-flex text-center">Press start to begin. You have 90 seconds to complete the quiz. Every wrong answer results in a 5 second penalty. The quiz ends when the timer runs out or all questions are answered.</p>
+                    <p class="d-flex text-center">Press start to begin. You have 90 seconds to complete the quiz. Every wrong answer results in a 15 second penalty. The quiz ends when the timer runs out or all questions are answered.</p>
                     <button id="start-btn" type="btn" class="btn btn-success mx-auto">Start</button>
                 </div>
             </section>
@@ -46,10 +46,10 @@
                 <div class="row">
                     <p id="random-question" class="justify-content-center"></p>
                     <div class="justify-content-center">
-                        <p><button id="a1" class="btn btn-secondary"></button></p>
-                        <p><button id="a2" class="btn btn-secondary"></button></p>
-                        <p><button id="a3" class="btn btn-secondary"></button></p>
-                        <p><button id="a4" class="btn btn-secondary"></button></p>
+                        <p><button id="a1" class="btn btn-secondary choiceBtn"></button></p>
+                        <p><button id="a2" class="btn btn-secondary choiceBtn"></button></p>
+                        <p><button id="a3" class="btn btn-secondary choiceBtn"></button></p>
+                        <p><button id="a4" class="btn btn-secondary choiceBtn"></button></p>
                     </div>
                     <div id="correct-incorrect">
                         <hr>
@@ -60,7 +60,7 @@
             <!--End Screen-->
             <section id="end">
                 <div class="row">
-                    <h2>Quiz Complete! Your final score is: <span id="final-score"></span></h2>
+                    <h2>Quiz Complete! Your final score is: <span id="score"></span></h2>
                     <p>Enter initials: <span><input placeholder="initials" id="initials"></span>
                         <button id="submit-score" class="btn btn-warning">Submit</button>
                     </p>
@@ -69,7 +69,9 @@
             <!--Highscore Screen-->
             <section id="highscore">
                 <h2>High Scores</h2>
-                <div id="score-list" class="list-group list-group-flush"></div>
+                <ol id="highscore-list">
+                    
+                </ol>
 
                 <p>
                     <button type="submit" class="btn btn-warning" id="go-back">Go Back</button>

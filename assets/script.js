@@ -6,36 +6,31 @@ var questions = [
         correct: "4"
     },
     {
-        question: 
-        answers:
-        correct:
+        question: "Arrays in Javascript can be used to store ____.",
+        answers: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
+        correct: "4"
     },
     {
-        question: 
-        answers:
-        correct:
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        answers: ["1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log"],
+        correct: "4"
     },
     {
-        question: 
-        answers:
-        correct:
+        question: "String values must be enclosed within ____ when being assigned to variables.",
+        answers: ["1. commmas", "2. curly brackets", "3. quotes", "4. parentheses"],
+        correct: "3"
     },
     {
-        question: 
-        answers:
-        correct:
-    },
-    {
-        question: 
-        answers:
-        correct:
+        question: "The condition in an if / else statement is enclosed within ____.",
+        answers: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
+        correct: "3"
     },
 ];
 
 //VARIABLES
 
 //Timer
-var timeEl = document.querySelector("p.timer");
+var timeEl = document.querySelector("p .timer");
 var timeLeft = 90;
 
 //Start Screen
@@ -50,20 +45,20 @@ var correctIncorrect = document.querySelector("correct-incorrect");
 //End Screen
 var endEl = document.querySelector("#end");
 var scoreEl = document.querySelector("#score");
-var intitalsInput = document.querySelector("initials");
+var intitalsInput = document.querySelector("#initials");
 
 //Highscore Screen
 var highscoreEL = document.querySelector("#highscore");
-var highscoreListEl = document.querySelector("highscore-list");
+var highscoreListEl = document.querySelector("#highscore-list");
 var scoreList = [];
 
 //Buttons
 var startBtn = document.querySelector("#start-btn");
-//answer button? 
 var choice1Btn = document.querySelector("#a1");
 var choice2Btn = document.querySelector("#a2");
 var choice3Btn = document.querySelector("#a3");
 var choice4Btn = document.querySelector("#a4");
+var choiceBtnAll = document.querySelectorAll("button.choiceBtn")
 var submitScoreBtn = document.querySelector("#submit-score");
 var goBackBtn = document.querySelector("#go-back");
 var clearScoresBtn = document.querySelector("#clear-scores");
@@ -73,7 +68,7 @@ var viewHighscoresBtn = document.querySelector("#view-highscores");
 
 //Timer
 function startTimer(){
-    var timerInterval = setInterval(function (){
+    var timerInterval = setInterval(function () {
         timeLeft--;
         timeEl.textContent = "Time left: " + timeLeft;
 
@@ -83,7 +78,7 @@ function startTimer(){
             endEl.style.display = "block";
             scoreEl.textContent = secondsLeft;
         }
-    },1000)
+    }, 1000);
 }
 
 //Starts quiz and timer, and hides start screen
@@ -97,8 +92,8 @@ function startQuiz() {
 }
 
 //Shows questions
-function showQuestions(questionsAwnsered) {
-    if (questionsAwnsered < questions.length) {
+function showQuestions(id) {
+    if (id < questions.length) {
         questionsEl.textContent = questions[id].question;
         choice1Btn.textContent = questions[id].answers[0];
         choice1Btn.textContent = questions[id].answers[1];
@@ -108,18 +103,18 @@ function showQuestions(questionsAwnsered) {
 }
 
 // Determines if answer is correct and subtracts time if answer is wrong
-function gradeAnswer(e) {
-    e.preventDefault();
+function gradeAnswer(event) {
+    event.preventDefault();
 
     correctIncorrect.style.display = "block";
     var declareCorrectIncorrect = document.createElement("p");
     correctIncorrect.appendChild(declareCorrectIncorrect);
 
-    if (questions[questionsAwnsered].correct === e.target.value) {
-        package.textContent = "Correct";
+    if (questions[questionsAwnsered].correct === event.target.value) {
+        declareCorrectIncorrect.textContent = "Correct";
     } else {
         timeLeft = timeLeft - 15;
-        p.textContent = "Incorrect";
+        declareCorrectIncorrect.textContent = "Incorrect";
     }
 
     if (questionsAwnsered < questions.length) {
@@ -130,16 +125,14 @@ function gradeAnswer(e) {
 }
 
 //Add highscore to local storage
-function addHighScore(e) {
-    e.preventDefault();
+function addHighScore(event) {
+    event.preventDefault();
 
     endEl.style.display = "none";
     highscoreEL.style.display = "block";
 
-    if (initials.value === "") {
-        alert("Please enter your initials!");
-        return;
-    } 
+    highscoreList.push({ initials: intitalsInput, score: secondsLeft });
+
 
     scoreList = scoreList.sort((a, b) => {
         if (a.score < b.score) {
@@ -149,7 +142,7 @@ function addHighScore(e) {
         }
       });
     
-    scoreListEl.innerHTML="";
+    highscoreListEl.innerHTML="";
     for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
@@ -178,4 +171,36 @@ function clearHighcoreList() {
 }
 
 // EVENT LISTENERS
-startBtn.addEventListener("click", )
+
+//Start Quiz
+startBtn.addEventListener("click", startQuiz);
+
+//View Highscores
+viewHighscoresBtn.addEventListener("click", function () {
+    if (highscoreEl.style.display === "none") {
+        highscoreEl.style.display = "block";
+    } else if (highscoreEl.style.display === "block") {
+        highscoreEl.style.display = "none";
+    } else {
+        return alert("No highscores yet, start quiz to add your score.");
+    }
+});
+
+//Clear highscores
+clearScoresBtn.addEventListener("click", clearHighcoreList);
+
+//Validates answers
+choiceBtnAll.forEach(item => {
+    item.addEventListener("click", gradeAnswer);
+});
+
+//Submits score 
+submitScoreBtn.addEventListener("click", addHighScore);
+
+//Return to Start Screen\
+goBackBtn.addEventListener("click", function () {
+    highscoreEl.style.display = "none";
+    startEl.style.display = "block";
+    timeLeft = 90;
+    timeEl.textContent = "Time Left: " + timeLeft;
+});
