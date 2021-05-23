@@ -106,5 +106,29 @@ function showQuestions(questionsAwnsered) {
         choice4Btn.textContent = questions[id].answers[3];
     }
 }
+
+// Determine if answer is correct
+function gradeAnswer(e) {
+    e.preventDefault();
+
+    correctIncorrect.style.display = "block";
+    var declareCorrectIncorrect = document.createElement("p");
+    correctIncorrect.appendChild(declareCorrectIncorrect);
+
+    if (questions[questionsAwnsered].correct === e.target.value) {
+        package.textContent = "Correct";
+    } else {
+        timeLeft = timeLeft - 15;
+        p.textContent = "Incorrect";
+    }
+
+    if (questionsAwnsered < questions.length) {
+        questionsAwnsered++;
+    }
+
+    showQuestions(questionsAwnsered)
+}
+
+
 // Event Listeners
 startBtn.addEventListener("click", )
