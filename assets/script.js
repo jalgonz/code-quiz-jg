@@ -1,7 +1,38 @@
 //Array of Questions 
-var questions = 
+var questions = [
+    {
+        question: "Commonly used data types do NOT include:",
+        answers: ["1. Booleans", "2. Numbers", "3. Strings", "4. Alerts"],
+        correct: "4"
+    },
+    {
+        question: 
+        answers:
+        correct:
+    },
+    {
+        question: 
+        answers:
+        correct:
+    },
+    {
+        question: 
+        answers:
+        correct:
+    },
+    {
+        question: 
+        answers:
+        correct:
+    },
+    {
+        question: 
+        answers:
+        correct:
+    },
+];
 
-// Declare Variables
+//VARIABLES
 
 //Timer
 var timeEl = document.querySelector("p.timer");
@@ -38,7 +69,7 @@ var goBackBtn = document.querySelector("#go-back");
 var clearScoresBtn = document.querySelector("#clear-scores");
 var viewHighscoresBtn = document.querySelector("#view-highscores");
 
-//Functions
+//FUNCTIONS
 
 //Timer
 function startTimer(){
@@ -55,3 +86,25 @@ function startTimer(){
     },1000)
 }
 
+//Starts quiz and timer, and hides start screen
+function startQuiz() {
+    startEl.style.display = "none";
+    questionsEl.style.display = "block";
+    questionsAwnsered = 0;
+
+    startTimer();
+    showQuestions(questionsAwnsered);
+}
+
+//Shows questions
+function showQuestions(questionsAwnsered) {
+    if (questionsAwnsered < questions.length) {
+        questionsEl.textContent = questions[id].question;
+        choice1Btn.textContent = questions[id].answers[0];
+        choice1Btn.textContent = questions[id].answers[1];
+        choice3Btn.textContent = questions[id].answers[2];
+        choice4Btn.textContent = questions[id].answers[3];
+    }
+}
+// Event Listeners
+startBtn.addEventListener("click", )
