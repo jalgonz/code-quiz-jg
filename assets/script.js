@@ -24,13 +24,13 @@ var questions = [
         question: "The condition in an if / else statement is enclosed within ____.",
         answers: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
         correct: "3"
-    },
+    }
 ];
 
 //VARIABLES
 
 //Timer
-var timeEl = document.querySelector("p .timer");
+var timeEl = document.querySelector("p.timer");
 var timeLeft = 90;
 
 //Start Screen
@@ -40,7 +40,7 @@ var startEl = document.querySelector("#start-screen");
 var questionsEl = document.querySelector("#question-screen");
 var randomQuestionEl = document.querySelector("#random-question");
 var questionsAwnsered = 0;
-var correctIncorrect = document.querySelector("correct-incorrect");
+var correctIncorrect = document.querySelector("#correct-incorrect");
 
 //End Screen
 var endEl = document.querySelector("#end");
@@ -48,7 +48,7 @@ var scoreEl = document.querySelector("#score");
 var intitalsInput = document.querySelector("#initials");
 
 //Highscore Screen
-var highscoreEL = document.querySelector("#highscore");
+var highscoreEl = document.querySelector("#highscore");
 var highscoreListEl = document.querySelector("#highscore-list");
 var scoreList = [];
 
@@ -76,7 +76,7 @@ function startTimer(){
             clearInterval(timerInterval);
             questionsEl.style.display = "none";
             endEl.style.display = "block";
-            scoreEl.textContent = secondsLeft;
+            scoreEl.textContent = timeLeft;
         }
     }, 1000);
 }
@@ -129,9 +129,9 @@ function addHighScore(event) {
     event.preventDefault();
 
     endEl.style.display = "none";
-    highscoreEL.style.display = "block";
+    highscoreEl.style.display = "block";
 
-    highscoreList.push({ initials: intitalsInput, score: secondsLeft });
+    scoreList.push({ initials: intitalsInput, score: timeLeft });
 
 
     scoreList = scoreList.sort((a, b) => {
@@ -149,8 +149,8 @@ function addHighScore(event) {
         highscoreListEl.append(li);
     }
 
-    storeHighscores();
-    showHighscores();
+   storeScores();
+   displayScores();
 } 
 
 function storeScores() {
