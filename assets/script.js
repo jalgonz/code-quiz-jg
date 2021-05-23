@@ -107,7 +107,7 @@ function showQuestions(questionsAwnsered) {
     }
 }
 
-// Determine if answer is correct
+// Determines if answer is correct and subtracts time if answer is wrong
 function gradeAnswer(e) {
     e.preventDefault();
 
@@ -129,6 +129,53 @@ function gradeAnswer(e) {
     showQuestions(questionsAwnsered)
 }
 
+//Add highscore to local storage
+function addHighScore(e) {
+    e.preventDefault();
 
-// Event Listeners
+    endEl.style.display = "none";
+    highscoreEL.style.display = "block";
+
+    if (initials.value === "") {
+        alert("Please enter your initials!");
+        return;
+    } 
+
+    scoreList = scoreList.sort((a, b) => {
+        if (a.score < b.score) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+    
+    scoreListEl.innerHTML="";
+    for (let i = 0; i < scoreList.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
+        highscoreListEl.append(li);
+    }
+
+    storeHighscores();
+    showHighscores();
+} 
+
+function storeScores() {
+    localStorage.setItem("scoreList", JSON.stringify(scoreList));
+}
+
+function displayScores() {
+    let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
+
+    if (storedScoreList !== null) {
+        scoreList = storedScoreList;
+    }
+}
+
+function clearHighcoreList() {
+    localStorage.clear();
+    highscoreListEl.innerHTML="";
+}
+
+// EVENT LISTENERS
 startBtn.addEventListener("click", )
